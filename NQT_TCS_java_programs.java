@@ -18,6 +18,39 @@ Output:
 
 Program
 import java.util.*;
-clas
+class Main{
+  public static void main(String[]args){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter the size of the array:");
+    int s = sc.nextInt();
+    int arr[] = new int[s];
+    for(int i=0;i<arr.length;i++){
+      arr[i]=sc.nextInt();
+    }
+    int a = 0;
+    for(int j=0;j<arr.length;j++){
+      if(arr[j]!=0){
+        arr[a]=arr[j];
+        a++;
+      }
+    }
+    while(a<arr.length){
+      arr[a]=0;
+      a++;
+    }
+    for(int k=0;k<arr.length;k++){
+      Stsrem.out.print(arr[k]+" ");
+    }
+  }
 }
 
+Output:
+Enter the size of the array: 
+4
+1
+0
+3
+0
+1 3 0 0 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
