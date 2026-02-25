@@ -66,3 +66,44 @@ Explanation:
 Binary representation of 10 is 1010. After toggling the bits(1010), will get 0101 which represents “5”. Hence output will print “5”.
 
 Program:
+import java.util.*;
+class Main{
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter the number: ");
+    int num=sc.nextInt();
+    int l=0;
+    String sum="",rev="";
+    whiile(num!=0){
+      l=num%2;
+      sum+=l;
+      num/=2;
+    }
+    char[] a1 = sum.toCharArray();
+    for(int i=a1.length-1;i>=0;i--){
+      rev+=a1[i];            
+    }
+    char[] a2 = rev.toCharArray();
+    for(int i=0;i<a2.length;i++){
+      if(a2[i]=='0'){
+        a2[i]=1;
+      }
+      else{
+        a2[i]=0;
+      }
+    }
+    int power=0;
+    int result=0;
+    for(int i =a2.length();i>=0;i--){
+      result=Math.pow(2,power);
+      power++;
+    }
+    System.out.print(result);
+  }
+}
+
+Output:
+Enter the number
+10
+5
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
