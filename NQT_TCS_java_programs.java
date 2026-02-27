@@ -107,3 +107,226 @@ Enter the number
 10
 5
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Statement – An automobile company manufactures both a two wheeler (TW) and a four wheeler (FW). A company manager wants to make the production of both types of vehicle according to the given data below:
+
+1st data, Total number of vehicle (two-wheeler + four-wheeler)=v
+2nd data, Total number of wheels = W
+The task is to find how many two-wheelers as well as four-wheelers need to manufacture as per the given data.
+Example :
+
+Input :
+200  -> Value of V
+540   -> Value of W
+
+Output :
+TW =130 FW=70
+
+Explanation:
+130+70 = 200 vehicles
+(70*4)+(130*2)= 540 wheels
+
+Constraints :
+
+2<=W
+W%2=0
+V<W
+Print “INVALID INPUT” , if inputs did not meet the constraints.
+
+The input format for testing 
+The candidate has to write the code to accept two positive numbers separated by a new line.
+
+First Input line – Accept value of V.
+Second Input line- Accept value for W.
+The output format for testing 
+
+Written program code should generate two outputs, each separated by a single space character(see the example)
+Additional messages in the output will result in the failure of test case
+
+Logic:
+### ✅ Problem Understanding
+
+You are given:
+
+* *V* → Total number of vehicles (Two-Wheelers + Four-Wheelers)
+* *W* → Total number of wheels
+
+You must find:
+
+* Number of *Two-Wheelers (TW)*
+* Number of *Four-Wheelers (FW)*
+
+If constraints are not satisfied → print *INVALID INPUT*
+
+---
+
+## ✅ Step 1: Understand the Vehicle Structure
+
+* A *Two-Wheeler (TW)* has *2 wheels*
+* A *Four-Wheeler (FW)* has *4 wheels*
+
+Let:
+
+* TW = x
+* FW = y
+
+---
+
+## ✅ Step 2: Form Mathematical Equations
+
+From total vehicles:
+
+[
+x + y = V
+]
+
+From total wheels:
+
+[
+2x + 4y = W
+]
+
+---
+
+## ✅ Step 3: Solve the Equations
+
+From first equation:
+
+[
+x = V - y
+]
+
+Substitute into second equation:
+
+[
+2(V - y) + 4y = W
+]
+
+Expand:
+
+[
+2V - 2y + 4y = W
+]
+
+[
+2V + 2y = W
+]
+
+[
+2y = W - 2V
+]
+
+[
+y = (W - 2V) / 2
+]
+
+So,
+
+[
+FW = (W - 2V) / 2
+]
+
+Now substitute back:
+
+[
+TW = V - FW
+]
+
+---
+
+## ✅ Step 4: Important Logical Observations
+
+For a valid solution:
+
+1. *W must be even* (because wheels come in pairs)
+2. *Minimum wheels possible* = 2 × V
+   (All vehicles are two-wheelers)
+3. *Maximum wheels possible* = 4 × V
+   (All vehicles are four-wheelers)
+4. FW must be ≥ 0
+5. TW must be ≥ 0
+
+If any of these fail → *INVALID INPUT*
+
+---
+
+## ✅ Example Walkthrough
+
+Input:
+V = 200
+W = 540
+
+Check constraints:
+
+* W ≥ 2 ✅
+* W is even ✅
+* 2×200 = 400 ≤ 540 ≤ 800 (4×200) ✅
+
+Now calculate:
+
+FW = (540 − 400) / 2
+FW = 140 / 2
+FW = 70
+
+TW = 200 − 70
+TW = 130
+
+---
+
+## ✅ Final Output
+
+TW = 130
+FW = 70
+
+---
+
+## 🎯 Core Logic Summary (Interview Answer Style)
+
+1. Form two linear equations:
+
+   * x + y = V
+   * 2x + 4y = W
+2. Solve algebraically to get:
+
+   * FW = (W − 2V) / 2
+   * TW = V − FW
+3. Validate constraints before printing result.
+4. If constraints fail → print *INVALID INPUT*
+
+---
+
+If you want, I can also explain the *intuitive logic without equations* (pure reasoning method used in aptitude rounds).
+
+Program:
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int V = sc.nextInt();
+        int W = sc.nextInt();
+
+        if (W >= 2 && W % 2 == 0 && V < W && W >= 2 * V && W <= 4 * V) {
+            
+            int FW = (W - 2 * V) / 2;
+            int TW = V - FW;
+
+            System.out.println("TW =" + TW + " FW=" + FW);
+        } 
+        else {
+            System.out.println("INVALID INPUT");
+        }
+    }
+}
+
+Output:
+Example Input
+200
+540
+Output
+TW =130 FW=70
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Program
+
+  
+Output
