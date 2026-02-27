@@ -434,3 +434,54 @@ Sample input:
 Sample output:
 3
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Program:
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int[][] arr = new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        int max=0,row=0;
+        for(int i=0;i<r;i++){
+            int count=0;
+            for(int j=0;j<c;j++){
+                if(arr[i][j]==1){
+                    count++;
+                }
+                if(max<count){
+                    max=count;
+                    row=i;
+                }
+            }
+        }
+        System.out.print(row);
+    }
+}
+
+Output:
+Expected input:
+4
+3
+  
+0
+1
+0
+1
+1
+0
+1
+0
+1
+1
+1
+1
+
+Expected Output:
+4
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
