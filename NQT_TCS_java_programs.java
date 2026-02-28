@@ -507,3 +507,87 @@ Expected input:
 Expected Output:
 4
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Technical Question 1
+🔹 String Conversion Problem (Minimum Moves)
+You are given:
+Integer N
+String A
+String B
+You must find the minimum number of operations to convert A to B.
+If not possible → return -1
+
+Program:
+import java.util.*;
+class Main{
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    String s1 = sc.next();
+    String s2 = sc.next();
+    char[] s1_char = s1.toCharArray();
+    char[] s2_char = s2.toCharArray();
+    Map<Character,Integer> tree_map1 = new TreeMap<>();
+    String s1_string="";
+    for(int i=0;i<s1_char.length;i++){
+      if(s1_string.indexOf(String.valueOf(s1_char[i]))==-1){
+        s1_string+=s1_char[i];
+      }
+    }
+    char[] s1_string_char = s1_string.toCharArray();
+    for(int i=0;i<s1_string_char.length;i++){
+      char first = s1_string_char[i];
+      int s1_count=0;
+      for(int j=0;j<s1_char.length;j++){
+        if(first==s1_char[j]){
+          s1_count++;
+        }        
+      }
+      tree_map1.put(first,s1_count);
+    }
+    Map<Character,Integer> tree_map2 = new TreeMap<>();
+    String s2_string="";
+    for(int i=0;i<s2_char.length;i++){
+      if(s2_string.indexOf(String.valueOf(s2_char[i]))==-1){
+        s2_string+=s2_char[i];
+      }
+    }
+    char[] s2_string_char = s2_string.toCharArray();
+    for(int i=0;i<s2_string_char.length;i++){
+      char first = s2_string_char[i];
+      int s2_count=0;
+      for(int j=0;j<s2_char.length;j++){
+        if(first==s2_char[j]){
+          s2_count++;
+        }        
+      }
+      tree_map2.put(first,s2_count);
+    }
+    if(s1_char.length==s2_char.length && tree_map1.equals(tree_map2)){
+      int count=0,int i=n-1,j=n-1;
+      while(i>=0){
+        if(s1_char[i]==s2_char[j]){
+          i--;
+          j--;
+        }
+        else{
+          count++;
+          i--;
+        }
+      }
+      System.out.print(count);
+    }
+    else{
+      System.out.print(-1);
+    }
+  }
+}
+
+Output:
+Sample input:
+4
+abcd
+abdc
+
+Sample output:
+3
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
